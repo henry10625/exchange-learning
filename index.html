@@ -39,25 +39,56 @@
   <p class="status">Open</p>
 </div>
 
-<div class="need-card urgent">
-  <p><strong>Need:</strong> Urgent prayer request</p>
-  <p class="status">Open</p>
+<div class="need-card">
+  <p><strong>Need:</strong> Ride to church on Sunday</p>
+  <p class="status">In Progress</p>
 </div>
 
-<button onclick="filterOpen()">Show Only Open Needs</button>
+<div class="need-card">
+  <p><strong>Need:</strong> Help with groceries</p>
+  <p class="status">Fulfilled</p>
+</div>
+
+<button onclick="setActive(this); filterNeeds('Open')">Open</button>
+<button onclick="setActive(this); filterNeeds('In Progress')">In Progress</button>
+<button onclick="setActive(this); filterNeeds('Fulfilled')">Fulfilled</button>
+<button onclick="setActive(this); showAll()">Show All</button>
 
 <script>
-  function filterOpen() {
-    const cards = document.querySelectorAll(".need-card");
+const cards = document.querySelectorAll(".need-card");
 
-    cards.forEach(card => {
-      if (card.innerText.includes("Open")) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-    });
-  }
+function filterNeeds(status) {
+  cards.forEach(card => {
+    if (card.innerText.includes(status)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
+function showAll() {
+  cards.forEach(card => {
+    card.style.display = "block";
+  });
+}
+
+// Color-code statuses
+document.querySelectorAll(".status").forEach(el => {
+  const status = el.innerText;
+
+  if (status === "Open") el.style.color = "orange";
+  if (status === "In Progress") el.style.color = "blue";
+  if (status === "Fulfilled") el.style.color = "green";
+});
+function setActive(button) {
+  document.querySelectorAll("button").forEach(btn => {
+    btn.style.background = "black";
+  });
+
+  button.style.background = "gray";
+}
+``
 </script>
 
 </body>
