@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Exchange - Needs</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    .need-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    .urgent {
+      border: 2px solid red;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      background: black;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>The Exchange</h1>
+
+<div class="need-card">
+  <p><strong>Need:</strong> Help moving this weekend</p>
+  <p class="status">Open</p>
+</div>
+
+<div class="need-card urgent">
+  <p><strong>Need:</strong> Urgent prayer request</p>
+  <p class="status">Open</p>
+</div>
+
+<button onclick="filterOpen()">Show Only Open Needs</button>
+
+<script>
+  function filterOpen() {
+    const cards = document.querySelectorAll(".need-card");
+
+    cards.forEach(card => {
+      if (card.innerText.includes("Open")) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
